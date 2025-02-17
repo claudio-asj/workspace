@@ -1,76 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="bg-[url('/bg.jpg')] bg-center bg-cover min-h-screen p-4">
-    <h1 class="px-8 pb-4 text-center text-2xl font-black text-emerald-50" id="userNameDisplay"></h1>
-    
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-[url('/bg.jpg')] bg-center bg-cover min-h-screen p-4">
+    <h1
+      class="px-8 pb-4 text-center text-2xl font-black text-emerald-50"
+      id="userNameDisplay"
+    ></h1>
+
     <div class="container mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <!-- Todo List -->
-            <div class="bg-white/90 p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-4">Todo List</h2>
-                <div class="mb-4">
-                    <input type="text" id="todoInput" placeholder="Nova tarefa..." class="w-full p-2 border rounded-md">
-                    <button onclick="addTodo()" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">
-                        Adicionar
-                    </button>
-                </div>
-                <ul id="todoList" class="space-y-2"></ul>
-            </div>
-
-            <!-- Clock and Timer -->
-            <div class="space-y-4">
-                <div class="bg-white/90 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">Relógio</h2>
-                    <div class="text-center">
-                        <div id="date" class="text-xl mb-2"></div>
-                        <div id="clock" class="text-4xl font-mono"></div>
-                    </div>
-                </div>
-
-                <div class="bg-white/90 p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4">Timer</h2>
-                    <div class="text-center">
-                        <div id="timer" class="text-4xl font-mono mb-4">00:00:00</div>
-                        <div class="space-x-2">
-                            <button onclick="startTimer()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Iniciar</button>
-                            <button onclick="pauseTimer()" class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600">Pausar</button>
-                            <button onclick="resetTimer()" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Reset</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Notes -->
-            <div class="bg-white/90 p-6 rounded-lg shadow-md">
-                <h2 class="text-2xl font-bold mb-4">Notas</h2>
-                <div class="mb-4">
-                    <input type="text" id="noteTitle" placeholder="Título da nota..." class="w-full p-2 border rounded-md mb-2">
-                    <textarea id="noteContent" placeholder="Conteúdo da nota..." class="w-full p-2 border rounded-md mb-2 h-24"></textarea>
-                    <button onclick="addNote()" class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">Adicionar Nota</button>
-                </div>
-                <div id="notesList" class="space-y-3"></div>
-            </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- Todo List -->
+        <div class="bg-white/90 p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-4">Todo List</h2>
+          <div class="mb-4">
+            <input
+              type="text"
+              id="todoInput"
+              placeholder="Nova tarefa..."
+              class="w-full p-2 border rounded-md"
+            />
+            <button
+              onclick="addTodo()"
+              class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600"
+            >
+              Adicionar
+            </button>
+          </div>
+          <ul id="todoList" class="space-y-2"></ul>
         </div>
+
+        <!-- Clock and Timer -->
+        <div class="space-y-4">
+          <div class="bg-white/90 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Relógio</h2>
+            <div class="text-center">
+              <div id="date" class="text-xl mb-2"></div>
+              <div id="clock" class="text-4xl font-mono"></div>
+            </div>
+          </div>
+
+          <div class="bg-white/90 p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Timer</h2>
+            <div class="text-center">
+              <div id="timer" class="text-4xl font-mono mb-4">00:00:00</div>
+              <div class="space-x-2">
+                <button
+                  onclick="startTimer()"
+                  class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600"
+                >
+                  Iniciar
+                </button>
+                <button
+                  onclick="pauseTimer()"
+                  class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600"
+                >
+                  Pausar
+                </button>
+                <button
+                  onclick="resetTimer()"
+                  class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notas -->
+        <div class="bg-white/90 p-6 rounded-lg shadow-md">
+          <h2 class="text-2xl font-bold mb-4">Notas</h2>
+          <div class="mb-4">
+            <input
+              type="text"
+              id="noteTitle"
+              placeholder="Título da nota..."
+              class="w-full p-2 border rounded-md mb-2"
+            />
+            <textarea
+              id="noteContent"
+              placeholder="Conteúdo da nota..."
+              class="w-full p-2 border rounded-md mb-2 h-24"
+            ></textarea>
+
+            <!-- Seletor de cor com algumas cores predefinidas -->
+            <select id="noteColor" class="w-full mb-2 p-2 border rounded-md">
+              <option value="#ffffff">Branco</option>
+              <option value="#ffcccc">Vermelho Claro</option>
+              <option value="#ccffcc">Verde Claro</option>
+              <option value="#ccccff">Azul Claro</option>
+              <option value="#ffff99">Amarelo Claro</option>
+              <option value="#f5f5f5">Cinza Claro</option>
+            </select>
+
+            <button
+              onclick="addNote()"
+              class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600"
+            >
+              Adicionar Nota
+            </button>
+          </div>
+          <div id="notesList" class="space-y-3"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Diálogo de Nome -->
-    <div id="nameDialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-xl font-bold mb-4">Digite seu nome</h2>
-            <input type="text" id="userNameInput" class="border p-2 rounded-md w-full mb-4">
-            <button onclick="saveUserName()" class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">Salvar</button>
-        </div>
+    <div
+      id="nameDialog"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold mb-4">Digite seu nome</h2>
+        <input
+          type="text"
+          id="userNameInput"
+          class="border p-2 rounded-md w-full mb-4"
+        />
+        <button
+          onclick="saveUserName()"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600"
+        >
+          Salvar
+        </button>
+      </div>
     </div>
 
     <div id="toastContainer" class="fixed bottom-4 right-4 space-y-2"></div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
