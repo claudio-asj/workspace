@@ -5,28 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-[url('/bg.jpg')] bg-center bg-cover min-h-screen p-4">
-  <h1 class="px-8 pb-4 text-center text-2xl font-black text-emerald-50">Workspace Claudio Jr</h1>
+    <h1 class="px-8 pb-4 text-center text-2xl font-black text-emerald-50" id="userNameDisplay"></h1>
+    
     <div class="container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <!-- Todo List -->
             <div class="bg-white/90 p-6 rounded-lg shadow-md">
                 <h2 class="text-2xl font-bold mb-4">Todo List</h2>
                 <div class="mb-4">
-                    <input type="text" id="todoInput" placeholder="Nova tarefa..." 
-                           class="w-full p-2 border rounded-md">
-                    <button onclick="addTodo()" 
-                            class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">
+                    <input type="text" id="todoInput" placeholder="Nova tarefa..." class="w-full p-2 border rounded-md">
+                    <button onclick="addTodo()" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">
                         Adicionar
                     </button>
                 </div>
                 <ul id="todoList" class="space-y-2"></ul>
             </div>
 
-            <!-- Clock and Timer Column -->
+            <!-- Clock and Timer -->
             <div class="space-y-4">
-                <!-- Clock -->
                 <div class="bg-white/90 p-6 rounded-lg shadow-md">
                     <h2 class="text-2xl font-bold mb-4">Relógio</h2>
                     <div class="text-center">
@@ -35,24 +34,14 @@
                     </div>
                 </div>
 
-                <!-- Timer -->
                 <div class="bg-white/90 p-6 rounded-lg shadow-md">
                     <h2 class="text-2xl font-bold mb-4">Timer</h2>
                     <div class="text-center">
                         <div id="timer" class="text-4xl font-mono mb-4">00:00:00</div>
                         <div class="space-x-2">
-                            <button onclick="startTimer()" 
-                                    class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
-                                Iniciar
-                            </button>
-                            <button onclick="pauseTimer()" 
-                                    class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600">
-                                Pausar
-                            </button>
-                            <button onclick="resetTimer()" 
-                                    class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
-                                Reset
-                            </button>
+                            <button onclick="startTimer()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Iniciar</button>
+                            <button onclick="pauseTimer()" class="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600">Pausar</button>
+                            <button onclick="resetTimer()" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">Reset</button>
                         </div>
                     </div>
                 </div>
@@ -62,171 +51,26 @@
             <div class="bg-white/90 p-6 rounded-lg shadow-md">
                 <h2 class="text-2xl font-bold mb-4">Notas</h2>
                 <div class="mb-4">
-                    <input type="text" id="noteTitle" placeholder="Título da nota..." 
-                           class="w-full p-2 border rounded-md mb-2">
-                    <textarea id="noteContent" placeholder="Conteúdo da nota..." 
-                            class="w-full p-2 border rounded-md mb-2 h-24"></textarea>
-                    <div class="flex space-x-2 mb-2">
-                        <label class="text-sm">Cor da nota:</label>
-                        <select id="noteColor" class="border rounded-md">
-                            <option value="bg-yellow-100">Amarelo</option>
-                            <option value="bg-blue-100">Azul</option>
-                            <option value="bg-green-100">Verde</option>
-                            <option value="bg-pink-100">Rosa</option>
-                            <option value="bg-purple-100">Roxo</option>
-                        </select>
-                    </div>
-                    <button onclick="addNote()" 
-                            class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">
-                        Adicionar Nota
-                    </button>
+                    <input type="text" id="noteTitle" placeholder="Título da nota..." class="w-full p-2 border rounded-md mb-2">
+                    <textarea id="noteContent" placeholder="Conteúdo da nota..." class="w-full p-2 border rounded-md mb-2 h-24"></textarea>
+                    <button onclick="addNote()" class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">Adicionar Nota</button>
                 </div>
                 <div id="notesList" class="space-y-3"></div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Todo List
-        let todos = JSON.parse(localStorage.getItem('todos')) || [];
+    <!-- Diálogo de Nome -->
+    <div id="nameDialog" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-4">Digite seu nome</h2>
+            <input type="text" id="userNameInput" class="border p-2 rounded-md w-full mb-4">
+            <button onclick="saveUserName()" class="bg-blue-500 text-white px-4 py-2 rounded-md w-full hover:bg-blue-600">Salvar</button>
+        </div>
+    </div>
 
-        function addTodo() {
-            const input = document.getElementById('todoInput');
-            if (input.value.trim()) {
-                todos.push({ text: input.value, completed: false });
-                localStorage.setItem('todos', JSON.stringify(todos));
-                input.value = '';
-                renderTodos();
-            }
-        }
+    <div id="toastContainer" class="fixed bottom-4 right-4 space-y-2"></div>
 
-        function toggleTodo(index) {
-            todos[index].completed = !todos[index].completed;
-            localStorage.setItem('todos', JSON.stringify(todos));
-            renderTodos();
-        }
-
-        function deleteTodo(index) {
-            todos.splice(index, 1);
-            localStorage.setItem('todos', JSON.stringify(todos));
-            renderTodos();
-        }
-
-        function renderTodos() {
-            const list = document.getElementById('todoList');
-            list.innerHTML = '';
-            todos.forEach((todo, index) => {
-                const li = document.createElement('li');
-                li.className = 'flex items-center justify-between p-2 border rounded';
-                li.innerHTML = `
-                    <div class="flex items-center">
-                        <input type="checkbox" ${todo.completed ? 'checked' : ''} 
-                               onclick="toggleTodo(${index})" 
-                               class="mr-2">
-                        <span class="${todo.completed ? 'line-through' : ''}">${todo.text}</span>
-                    </div>
-                    <button onclick="deleteTodo(${index})" 
-                            class="text-red-500 hover:text-red-700">
-                        ❌
-                    </button>
-                `;
-                list.appendChild(li);
-            });
-        }
-
-        // Notes
-        let notes = JSON.parse(localStorage.getItem('notes')) || [];
-
-        function addNote() {
-            const title = document.getElementById('noteTitle').value;
-            const content = document.getElementById('noteContent').value;
-            const color = document.getElementById('noteColor').value;
-            
-            if (title.trim() && content.trim()) {
-                notes.push({ title, content, color, timestamp: new Date().toISOString() });
-                localStorage.setItem('notes', JSON.stringify(notes));
-                document.getElementById('noteTitle').value = '';
-                document.getElementById('noteContent').value = '';
-                renderNotes();
-            }
-        }
-
-        function deleteNote(index) {
-            notes.splice(index, 1);
-            localStorage.setItem('notes', JSON.stringify(notes));
-            renderNotes();
-        }
-
-        function renderNotes() {
-            const list = document.getElementById('notesList');
-            list.innerHTML = '';
-            notes.forEach((note, index) => {
-                const div = document.createElement('div');
-                div.className = `${note.color} p-4 rounded-lg shadow transition-transform hover:scale-102`;
-                div.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <h3 class="font-bold text-lg">${note.title}</h3>
-                        <button onclick="deleteNote(${index})" 
-                                class="text-red-500 hover:text-red-700">
-                            ❌
-                        </button>
-                    </div>
-                    <p class="mt-2 whitespace-pre-wrap">${note.content}</p>
-                    <div class="text-sm text-gray-500 mt-2">
-                        ${new Date(note.timestamp).toLocaleString('pt-BR')}
-                    </div>
-                `;
-                list.appendChild(div);
-            });
-        }
-
-        // Timer
-        let time = 0;
-        let timerInterval = null;
-
-        function startTimer() {
-            if (!timerInterval) {
-                timerInterval = setInterval(() => {
-                    time++;
-                    updateTimerDisplay();
-                }, 1000);
-            }
-        }
-
-        function pauseTimer() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-        }
-
-        function resetTimer() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            time = 0;
-            updateTimerDisplay();
-        }
-
-        function updateTimerDisplay() {
-            const hours = Math.floor(time / 3600);
-            const minutes = Math.floor((time % 3600) / 60);
-            const seconds = time % 60;
-            document.getElementById('timer').textContent = 
-                `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        }
-
-        // Clock
-        function updateClock() {
-            const now = new Date();
-            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('date').textContent = now.toLocaleDateString('pt-BR', dateOptions);
-            document.getElementById('clock').textContent = now.toLocaleTimeString('pt-BR');
-        }
-
-        // Initial renders
-        renderTodos();
-        renderNotes();
-        updateTimerDisplay();
-        updateClock();
-        setInterval(updateClock, 1000);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
