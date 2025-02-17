@@ -62,6 +62,7 @@ Você tem alguma ideia para melhorar este dashboard? Entre em contato!
 
 Este projeto está sob a licença MIT.
 
+
 ---
 
 Desenvolvido com ❤️ por Claudio Junior
