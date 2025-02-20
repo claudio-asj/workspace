@@ -6,13 +6,22 @@
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- Open Graph Tags para Facebook e LinkedIn -->
-    <meta property="og:title" content="Dashboard">
-    <meta property="og:description" content="Um painel de controle interativo com lista de tarefas, relógio e timer.">
-    <meta property="og:image" content="https://imgs.search.brave.com/fcS7aZeeL_TrN1frr-LOrt1Upo4UwTlBuL19qdQIZmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXMu/Y2xvdWRpbmFyeS5j/b20vaW5ieXRlcy9p/bWFnZS91cGxvYWQv/Y19maWxsLHFfYXV0/byx3XzYwMC9jX3Ro/dW1iLHdfNDAwL3Yx/NjE3MTQ4OTIzL2Rl/di9raW1iZXJyeXBp/L3dvcmtzcGFjZS9t/YWluLWltYWdlLTFf/eXJla2QyLnBuZw">
-    <meta property="og:url" content="https://claudio-asj.github.io/workspace/">
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dashboard" />
+    <meta
+      property="og:description"
+      content="Um painel de controle interativo com lista de tarefas, relógio e timer."
+    />
+    <meta
+      property="og:image"
+      content="https://imgs.search.brave.com/fcS7aZeeL_TrN1frr-LOrt1Upo4UwTlBuL19qdQIZmQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9yZXMu/Y2xvdWRpbmFyeS5j/b20vaW5ieXRlcy9p/bWFnZS91cGxvYWQv/Y19maWxsLHFfYXV0/byx3XzYwMC9jX3Ro/dW1iLHdfNDAwL3Yx/NjE3MTQ4OTIzL2Rl/di9raW1iZXJyeXBp/L3dvcmtzcGFjZS9t/YWluLWltYWdlLTFf/eXJla2QyLnBuZw"
+    />
+    <meta
+      property="og:url"
+      content="https://claudio-asj.github.io/workspace/"
+    />
+    <meta property="og:type" content="website" />
   </head>
 
   <body class="bg-[url('./bg.jpg')] bg-center bg-cover min-h-screen p-4">
@@ -141,6 +150,24 @@
     </div>
 
     <div id="toastContainer" class="fixed bottom-4 right-4 space-y-2"></div>
+
+    <footer class="fixed pb-2 w-full bottom-0">
+      <div
+        class="text-center py-4 px-8 rounded-lg bg-zinc-100 w-fit mx-auto text-xs relative"
+      >
+        Desenvolvido com ❤️ por
+        <a
+          class="font-mono ml-1 font-semibold underline"
+          href="https://github.com/Claudio-asj"
+          target="_blank"
+          >ClaudioJr
+        </a>
+
+        <button onclick="CloseFooter()" class="absolute top-2 right-4">
+          X
+        </button>
+      </div>
+    </footer>
 
     <script src="script.js"></script>
   </body>

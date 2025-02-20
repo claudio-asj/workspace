@@ -310,3 +310,8 @@ function deleteNote(noteItem, title, content, color, date) {
 function renderNotes() {
   loadNotesFromLocalStorage();
 }
+
+function CloseFooter(){
+  const footer = document.querySelector("footer")
+  footer.classList.add("hidden")
+}
