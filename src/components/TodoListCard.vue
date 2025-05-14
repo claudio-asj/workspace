@@ -20,12 +20,12 @@
       ></textarea>
       <select v-model="newTask.color" class="w-full p-2 border rounded">
         <option disabled value="">Escolha uma cor</option>
-        <option value="bg-red-100">Vermelho</option>
-        <option value="bg-green-100">Verde</option>
-        <option value="bg-blue-100">Azul</option>
-        <option value="bg-yellow-100">Amarelo</option>
-        <option value="bg-purple-100">Roxo</option>
-        <option value="bg-gray-100">Cinza</option>
+        <option value="bg-red-200">Vermelho</option>
+        <option value="bg-green-200">Verde</option>
+        <option value="bg-blue-200">Azul</option>
+        <option value="bg-yellow-200">Amarelo</option>
+        <option value="bg-purple-200">Roxo</option>
+        <option value="bg-gray-200">Cinza</option>
       </select>
       <button
         type="submit"
@@ -42,7 +42,7 @@
         :key="index"
         :class="[
           task.color,
-          'p-4 rounded shadow flex flex-col',
+          'p-4 rounded shadow flex flex-col text-slate-950',
           task.isFinished ? 'opacity-60 line-through' : '',
         ]"
       >
