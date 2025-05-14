@@ -19,13 +19,15 @@
         class="w-full p-2 border rounded"
       ></textarea>
       <select v-model="newTask.color" class="w-full p-2 border rounded">
-        <option disabled value="">Escolha uma cor</option>
-        <option value="bg-red-200">Vermelho</option>
-        <option value="bg-green-200">Verde</option>
-        <option value="bg-blue-200">Azul</option>
-        <option value="bg-yellow-200">Amarelo</option>
-        <option value="bg-purple-200">Roxo</option>
-        <option value="bg-gray-200">Cinza</option>
+        <option class="text-slate-50" disabled value="">
+          Escolha uma cor
+        </option>
+        <option class="text-slate-950" value="bg-red-200">Vermelho</option>
+        <option class="text-slate-950" value="bg-green-200">Verde</option>
+        <option class="text-slate-950" value="bg-blue-200">Azul</option>
+        <option class="text-slate-950" value="bg-yellow-200">Amarelo</option>
+        <option class="text-slate-950" value="bg-purple-200">Roxo</option>
+        <option class="text-slate-950" value="bg-gray-200">Cinza</option>
       </select>
       <button
         type="submit"

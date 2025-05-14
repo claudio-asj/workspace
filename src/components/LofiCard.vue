@@ -24,6 +24,7 @@
           v-for="video in lofiVideos"
           :key="video.id"
           :value="video.id"
+          class="text-slate-950"
         >
           {{ video.name }}
         </option>
@@ -36,15 +37,13 @@
 import { ref, computed } from 'vue'
 
 const lofiVideos = [
-  { id: '5qap5aO4i9A', name: 'Lofi Girl - Relax & Study' },
-  { id: 'DWcJFNfaw9c', name: 'Chillhop Radio - jazzy beats' },
-  { id: 'hHW1oY26kxQ', name: 'Lofi hip hop mix - beats to sleep/study to' },
-  { id: 'jfKfPfyJRdk', name: 'Lofi Girl - beats to relax/study to (novo)' }
+  { id: '5jaT_8hy3Vg?si=dBpoLSvtOsFrusPh', name: 'Lofi Game' },
+  {id: 'xv3h5tBDOmY?si=eMuVJbOoUd6wb_HL', name: 'Lofi Brasil'}
 ]
 
 const selectedId = ref(lofiVideos[0].id)
 
 const currentEmbedUrl = computed(() =>
-  `https://www.youtube.com/embed/${selectedId.value}?autoplay=1&mute=1`
+  `https://www.youtube.com/embed/${selectedId.value}`
 )
 </script>
